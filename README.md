@@ -42,6 +42,10 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+<!-- my answer below -->
+closures are the ability for a child function or an inner function to access variables from a higher level scope even after the variables have been called or closed or terminated 
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +67,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+<!-- my answer below -->
+const dansRoll and zoesRoll use closure personalDice() ; so personalDice() is the closure because it has a return statement and the consts defined outside of it are using it.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+<!-- my answer below -->
+The ${name} stays the same while the ${newRoll} can change.
+
 c. What is the lexical scope of `newRoll`? 
+<!-- my answer below -->
+The lexical scope of newRoll is the function in the return statement of personalDice and personalDice itself. 
 
 ### Task 3 - Stretch Goals
 
