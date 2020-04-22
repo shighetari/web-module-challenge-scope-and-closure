@@ -31,7 +31,7 @@ There are layers upon layers of nested functions within the game of baseball. Yo
 2. Clone _your_ fork (not Lambda's repo by mistake!)
 3. `cd` into your newly cloned repository
 4. Create a new branch by typing `git checkout -b <firstName-lastName>`
-5. Work on your branch, push commits and create PR as usual
+5. Work on your branch, push commit s and create PR as usual
 
 ### Task 2a - MVP code
 
@@ -42,6 +42,11 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+<!-- my answer below -->
+*closures are the ability for a child function or an inner function to access variables from a higher level scope even after the variables have been called or closed or terminated  --> notes
+*it's a function from which our argument is manipulated --> that function enclosed in another function . So a closure has to be a function inside of another function  --> my words
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +68,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+<!-- my answer below -->
+const dansRoll and zoesRoll use the same  closure function() (which is located inside of personalDic()) ;
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+<!-- my answer below -->
+The ${name} stays the same while the ${newRoll} can change.
+
 c. What is the lexical scope of `newRoll`? 
+<!-- my answer below -->
+The lexical scope of newRoll is the function in the return statement of personalDice and personalDice itself. 
 
 ### Task 3 - Stretch Goals
 
