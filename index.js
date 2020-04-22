@@ -30,16 +30,16 @@ function processFirstItem(stringList, callback) {
  * 
  * 
  * counter1 invokes counterMaker()/ we assigned counterMaker() to the const counter1;
- * counter1 works with the counterMaker() function only. So counterMaker is its closure.
+ * counter1 works with the counterMaker() and manipulates the return count++ that inside of that function, so counter() is its closure
  * 
  * counter2 doesn't work with the counterMaker() function AT ALL. It only grabs and manipulates the let count=0; that is defined above it
- * counter2 has memory of the variable count--> every time we console.log it , it will add 1 to the stored value
- * 
+ *
  * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
- * counter1 uses closure, because it goes back to counterMaker() which is a function with a return statement
- * despite that return statement , we can still access it 
+ * counter1 uses closure, because it goes back to counterMaker() which has another function inside of it that is used by counter1;
+ * despite that return statement , we can still access it
+ * SO counter() is its closure
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
@@ -158,20 +158,40 @@ function scoreboard(cbGetInningScore, cbInning, inningNumber/* CODE HERE */) {
 
 let arrayAway=[]; //empty array-I'll put Away scores for each round here
 let arrayHome=[]; 
-
+let awayValue=0;
+let homeValue=0;
 for(let i=0; i<inningNumber; i++){
-  arrayAway.push(getInningScore()['Away'])
-  arrayHome.push(getInningScore()['Home'])
+  arrayAway.push(getInningScore()['Away']);
+  arrayHome.push(getInningScore()['Home']);
+
   if(i===0){
-    console.log(`${i+1}st inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
+    // console.log(`${i+1}st inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
+    awayValue+=arrayAway[i];
+    homeValue+=arrayHome[i];
+    console.log(`${i+1}st inning: awayTeam ${awayValue} - homeTeam ${homeValue}`)
+  
   }else if(i===1){
-  console.log(`${i+1}nd inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
+  // console.log(`${i+1}nd inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
+  awayValue+=arrayAway[i];
+  homeValue+=arrayHome[i];
+   console.log(`${i+1}nd inning: awayTeam ${awayValue} - homeTeam ${homeValue}`)
+ 
 }else if(i===2){
-console.log(`${i+1}rd inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
+// console.log(`${i+1}rd inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
+awayValue+=arrayAway[i];
+homeValue+=arrayHome[i];
+console.log(`${i+1}rd inning: awayTeam ${awayValue} - homeTeam ${homeValue}`)
+
 }else{
-  console.log(`${i+1}th inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
+  // console.log(`${i+1}th inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
+  awayValue+=arrayAway[i];
+  homeValue+=arrayHome[i];
+  console.log(`${i+1}th inning: awayTeam ${awayValue} - homeTeam ${homeValue}`)
+ 
 }
+
 }
+// console.log(arrayAway + '       ' + arrayHome)    ---->checking how my Arrays look like
 
 let finalScoreAway = arrayAway.reduce(function(accumulator, currentValue){
  return accumulator + currentValue;
@@ -182,20 +202,7 @@ let finalScoreHome = arrayHome.reduce(function(accumulator, currentValue){
  },0);
 
 
-// for(let i=0; i<inningNumber; i++){
-//   if(i===0){
-//     console.log(`${i+1}st inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
-//   }else if(i===1){
-//   console.log(`${i+1}nd inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
-// }else if(i===2){
-// console.log(`${i+1}rd inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
-// }else{
-//   console.log(`${i+1}th inning: awayTeam ${arrayAway[i]} - homeTeam ${arrayHome[i]}`)
-// }
-// }
-
-return (`Final Score: awayTeam ${finalScoreAway} - homeTeam ${finalScoreHome}`);
-  
+return (`Final Score: awayTeam ${finalScoreAway} - homeTeam ${finalScoreHome}`); 
 }
 
 console.log(scoreboard(finalScore, inning, 9))
